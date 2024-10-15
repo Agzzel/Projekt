@@ -1,5 +1,3 @@
-# Koden har enbart testats på Linux
-
 from generate_key import create_key
 from cryptography.fernet import Fernet
 import argparse

@@ -1,5 +1,3 @@
-# Koden har enbart testats på Linux
-
 from cryptography.fernet import Fernet
 
 def create_key(key_name):

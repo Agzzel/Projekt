@@ -1,7 +1,5 @@
-# Axel Sterner
-# Scriptet har enbart testats på Linux
-
 import nmap
+import argparse
 
 nm = nmap.PortScanner()
 
@@ -30,22 +28,17 @@ def scanFile(targetFile):
             print(str(nm[line]))
     f.close()
 
-running = True
-while running:
-    option = input("Choose an option: scan input, scan file, exit \n")
+parser = argparse.ArgumentParser()
+subparsers = parser.add_subparsers(dest="command")
 
-    if option == "scan input":
-        target = input("Enter the target's IP: ")
-        scanTarget(target)
+ip_parser = subparsers.add_parser("scan_ip", help="Scan an IP adress")
+ip_parser.add_argument("adress", type=str, help="IP adress to scan")
 
-    elif option == "scan file":
-        target = input("Enter filename: ")
-        print(target)
-        scanFile(target)
+file_parser = subparsers.add_parser("scan_file", help="Scan IP adresses from file")
+file_parser.add_argument("file", type=str, help="The target file to scan")
 
-    elif option == "exit":
-        print("Shutting down \n")
-        running = False
-    
-    else:
-        print("Invalid option")
+args = parser.parse_args()
+if args.command == "scan_ip":
+    scanTarget(args.adress)
+elif args.command == "scan_file":
+    scanFile(args.file)
