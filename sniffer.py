@@ -1,9 +1,3 @@
-#   Spara packets som flödar i nätverket i en .pcap-fil för analys i t.ex. WireShark.
-#   Användaren ska kunna specificera hur många packets som ska sparas (t.ex. 25 packets)
-#   Anv. ska välja vilket protokoll som ska avlyssnas, standard är TCP.
-
-# 
-
 import argparse
 from scapy.all import *
 
@@ -25,3 +19,6 @@ try:
     performSniff(args.count, args.protocol, args.filename) 
 except PermissionError:
     print("Error: this program can only be executed by root")
+
+args = parser.parse_args()
+performSniff(args.count, args.protocol, args.filename)
