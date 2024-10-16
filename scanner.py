@@ -11,6 +11,7 @@ def scanTarget(target):
         resultFile = open("results.txt", "w")
         resultFile.write(str(nm[target])) 
         resultFile.close()
+        print("Saved scan results to results.txt")
     else:
         print(nm[target])
 
@@ -22,6 +23,7 @@ def scanFile(targetFile):
         for line in f:
             nm.scan(line)
             resultFile.write(str(nm[line]))
+        print("Saved scan results to results.txt")
     else:
         for line in f:
             nm.scan(line)

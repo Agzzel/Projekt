@@ -2,14 +2,13 @@
 #   Användaren ska kunna specificera hur många packets som ska sparas (t.ex. 25 packets)
 #   Anv. ska välja vilket protokoll som ska avlyssnas, standard är TCP.
 
-# Lägg in felhantering
 # 
 
 import argparse
 from scapy.all import *
 
 parser = argparse.ArgumentParser(description="Simple Packet Sniffer")
-parser.add_argument("count", type=int, help="Specify how many packets should be sniffed")
+parser.add_argument("count", type=int, help="Specify how many packets to sniff")
 parser.add_argument("protocol", type=str, help="Specify protocol to sniff")
 parser.add_argument("filename", type=str, help="Name of the .pcap file that stores all the packets")
 parser.add_argument("--interface", type=str, required=False, help="Network interface to collect packets from")

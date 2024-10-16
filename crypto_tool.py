@@ -11,7 +11,8 @@ def encrypt(message, keyInput):
     cipher = Fernet(key) 
     message = message.encode()
     cipher_text = cipher.encrypt(message)
-    fileName = input("Enter the name to save the encrypted file as (must end in .enc):")
+    fileName = input("Enter the name to save the encrypted file as:")
+    fileName = fileName + ".enc"
     with open(fileName, "wb") as encoded_file:
         encoded_file.write(cipher_text)
 
