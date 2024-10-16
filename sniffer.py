@@ -12,10 +12,13 @@ parser = argparse.ArgumentParser(description="Simple Packet Sniffer")
 parser.add_argument("count", type=int, help="Specify how many packets should be sniffed")
 parser.add_argument("protocol", type=str, help="Specify protocol to sniff")
 parser.add_argument("filename", type=str, help="Name of the .pcap file that stores all the packets")
-
+parser.add_argument("--interface", type=str, required=False, help="Network interface to collect packets from")
 
 def performSniff(packetNum, protocol, filename):
-    capture = sniff(count=packetNum, filter=protocol)
+    if args.interface:
+        capture = sniff(count=packetNum, filter=protocol, iface=args.interface)
+    else:
+        capture = sniff(count=packetNum, filter=protocol)
     capture.summary()
     wrpcap(filename, capture)
 try:
