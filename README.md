@@ -1,13 +1,11 @@
 <h3> Crypto Tool </h3>
 
-Används för att kryptera och dekryptera textsträngar. Om det inte redan finns en färdiggenererad
-krypteringsnyckel måste kommandot "generate" köras för att skapa en krypteringsnyckel, denna nyckel
-används både för att kryptera och dekryptera textsträngar. Skriptet generate_key.py används för detta.
-Den krypterade strängen sparas i en fil.
+Används för att kryptera och dekryptera textsträngar med hjälp av en krypteringsnyckel.
+Om det inte redan finns en färdiggenererad nyckel måste kommandot "generate" köras för att skapa en. Skriptet generate_key.py används för detta. Den krypterade strängen sparas i en fil.
 
 <b>Exempelkörning</b>:
 
-python3 crypto_tool.py generate_key secret.key # Genererar en krypteringsnyckel
+python3 crypto_tool.py generate_key secret.key # Genererar en krypteringsnyckel<br>
 python3 crypto_tool.py encrypt HelloWorld secret.key # Krypterar strängen HelloWorld med krypteringsnyckeln
 
 <b>Kända begränsningar:</b>
