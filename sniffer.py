@@ -1,10 +1,10 @@
 import argparse
 from scapy.all import *
 
-parser = argparse.ArgumentParser(description="Simple Packet Sniffer")
+parser = argparse.ArgumentParser(description="A simple program for capturing packets. Requires root privileges to run!")
 parser.add_argument("count", type=int, help="Specify how many packets to sniff")
 parser.add_argument("protocol", type=str, help="Specify protocol to sniff")
-parser.add_argument("filename", type=str, help="Name of the .pcap file that stores all the packets")
+parser.add_argument("filename", type=str, help="Name of the file where packets will be stored after capture")
 parser.add_argument("--interface", type=str, required=False, help="Network interface to collect packets from")
 
 def performSniff(packetNum, protocol, filename):

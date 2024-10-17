@@ -21,9 +21,6 @@ skanna en IP-adress som anges som argument, eller flera IP-adresser från en fil
 
 python3 scanner.py scan_ip 127.0.0.1 # Skannar localhost
 
-<b>Kända begränsningar:</b>
-
-
 <h3> Sniffer </h3>
 
 Avlyssnar packets som skickas och tas emot på ett nätverk. Detta skript måste köras med root-behörigheter. Skriptet tar emot antal packets som ska sparas, vilket protokoll som ska användas
