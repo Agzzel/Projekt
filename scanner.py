@@ -16,7 +16,11 @@ def scanTarget(target):
         print(nm[target])
 
 def scanFile(targetFile):
-    f = open(targetFile, "r")
+    try:
+        f = open(targetFile, "r")
+    except FileNotFoundError:
+        print("Error: file not found")
+        return
     response = input("Save scan results to file? (y/n)\n")
     if response == "y":
         resultFile = open("results.txt", "w")

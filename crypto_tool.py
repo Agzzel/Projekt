@@ -6,8 +6,12 @@ def generate_key(key_name):
     create_key(key_name)
 
 def encrypt(message, keyInput):
-    with open(keyInput, "rb") as keyFile:
-        key = keyFile.read()
+    try:
+        with open(keyInput, "rb") as keyFile:
+            key = keyFile.read()
+    except FileNotFoundError:
+        print("Error: no encryption key found, generate one with command 'generate'")
+        return
     cipher = Fernet(key) 
     message = message.encode()
     cipher_text = cipher.encrypt(message)
@@ -18,10 +22,18 @@ def encrypt(message, keyInput):
 
 
 def decrypt(fileName, key):
-    with open(fileName, "rb") as encrypted_message:
-        message = encrypted_message.read()
-    with open(key, "rb") as key_file:
-        key = key_file.read()
+    try:
+        with open(fileName, "rb") as encrypted_message:
+            message = encrypted_message.read()
+    except FileNotFoundError:
+        print("Error: file not found")
+        return
+    try:
+        with open(key, "rb") as key_file:
+            key = key_file.read()
+    except FileNotFoundError:
+        print("Error: no decryption key found, generate one with command 'generate'")
+        return
     cipher_suite = Fernet(key)
     plain_text = cipher_suite.decrypt(message)
     plainTextFile = open("output.txt","w")
