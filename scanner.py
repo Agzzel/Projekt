@@ -27,17 +27,17 @@ def scanFile(targetFile):
         for line in f:
             nm.scan(line)
             resultFile.write(str(nm[line]))
+        resultFile.close()
         print("Saved scan results to results.txt")
     else:
         for line in f:
             nm.scan(line)
             print(str(nm[line]))
     f.close()
-
 parser = argparse.ArgumentParser()
 subparsers = parser.add_subparsers(dest="command")
 
-ip_parser = subparsers.add_parser("scan_ip", help="Scan an IP adress")
+ip_parser = subparsers.add_parser("scan_ip", help="Scan an IP adress.")
 ip_parser.add_argument("adress", type=str, help="IP adress to scan")
 
 file_parser = subparsers.add_parser("scan_file", help="Scan IP adresses from file")

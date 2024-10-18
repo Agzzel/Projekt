@@ -5,7 +5,7 @@ Om det inte redan finns en färdiggenererad nyckel måste kommandot "generate" k
 
 <b>Exempelkörning</b>:
 
-python3 crypto_tool.py generate_key secret.key # Genererar en krypteringsnyckel<br>
+python3 crypto_tool.py generate_key secret.key # Genererar en krypteringsnyckel med namn secret.key<br>
 python3 crypto_tool.py encrypt HelloWorld secret.key # Krypterar strängen HelloWorld med krypteringsnyckeln
 
 <b>Kända begränsningar:</b>

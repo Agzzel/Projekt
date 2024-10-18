@@ -19,12 +19,14 @@ def encrypt(message, keyInput):
     fileName = fileName + ".enc"
     with open(fileName, "wb") as encoded_file:
         encoded_file.write(cipher_text)
+        encoded_file.close()
 
 
 def decrypt(fileName, key):
     try:
         with open(fileName, "rb") as encrypted_message:
             message = encrypted_message.read()
+            encrypted_message.close()
     except FileNotFoundError:
         print("Error: file not found")
         return
@@ -33,6 +35,7 @@ def decrypt(fileName, key):
             key = key_file.read()
     except FileNotFoundError:
         print("Error: no decryption key found, generate one with command 'generate'")
+        key_file.close()
         return
     cipher_suite = Fernet(key)
     plain_text = cipher_suite.decrypt(message)
@@ -43,14 +46,14 @@ def decrypt(fileName, key):
 parser = argparse.ArgumentParser()
 subparsers = parser.add_subparsers(dest="command")
 
-key_parser = subparsers.add_parser("generate", help="Generate an encryption key")
+key_parser = subparsers.add_parser("generate", help="Generate an encryption/decryption key. Args: name of key")
 key_parser.add_argument("name", type=str, help="name of the key file")
 
-encrypt_parser = subparsers.add_parser("encrypt", help="Encrypt a text string")
+encrypt_parser = subparsers.add_parser("encrypt", help="Encrypt a text string. Args: string to encrypt, key")
 encrypt_parser.add_argument("message", type=str, help="text to encrypt")
 encrypt_parser.add_argument("key", type=str, help="encryption key")
 
-decrypt_parser = subparsers.add_parser("decrypt", help="Decrypt an encrypted file")
+decrypt_parser = subparsers.add_parser("decrypt", help="Decrypt an encrypted file. Args: file to decrypt, name of key")
 decrypt_parser.add_argument("filename", type=str, help="File to decrypt")
 decrypt_parser.add_argument("key", type=str, help="Decryption key")
 
