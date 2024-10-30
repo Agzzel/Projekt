@@ -11,7 +11,12 @@ args = parser.parse_args()
 def crackPassword(hashedPass, wordList, algorithm):
     a = algorithm.lower()
     foundPass = False
-    with open(wordList,"rt") as f:
+    try:
+        f = open(wordList,"r")
+    except FileNotFoundError:
+        print("Error: could not find wordlist")
+        return
+    else:
         for line in f:
             if a == "sha1":
                 hashedLine = hashlib.sha1(line.strip().encode('utf-8')).hexdigest()
@@ -20,13 +25,18 @@ def crackPassword(hashedPass, wordList, algorithm):
             elif a == "md5":
                 hashedLine = hashlib.md5(line.strip().encode('utf-8')).hexdigest()
             else:
-                raise ValueError("Error: unsupported algorithm. Please choose between SHA1, SHA256 or MD5.")
+                raise ValueError("Unsupported algorithm. Please choose between SHA1, SHA256 and MD5")
+                f.close()
+            
             if hashedLine == hashedPass:
+                f.close()
                 print("Found password:", line)
                 foundPass = True
                 return
+
         if foundPass == False:
-           print("Could not find a matching password. Try changing wordlist.")
+            f.close()
+            print("Error: could not find a matching password. Try changing wordlist")
 
 
 crackPassword(args.hashedpass, args.wordlist, args.algo)

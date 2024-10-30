@@ -34,3 +34,14 @@ sudo python3 sniffer.py 10 tcp results.pcap --interface wlp1s0 # Samlar in 10 tc
 
 Användaren måste specificera ett antal packets att samla in, detta gör att skriptet inte är lämpligt 
 om användaren inte vet hur många packets som är relevanta att samla in.
+
+<h3> Jack the Rat </h3>
+Knäcker hashade strängar för att avslöja lösenord. Skriptet tar emot en hashad sträng, en textfil och 
+en sträng som visar vilken algoritm som användes för att hasha strängen. 
+
+<h3> Exempelkörning </h3>
+
+python3 jack.py d12177a2035ed8ca22acf884f9e3990729603806 wordlist.txt sha1 # ger lösenordet "1337H4xx0r"
+
+<h3> Kända begränsningar </h3>
+Skriptet kan enbart knäcka strängar som hashats med SHA1, SHA256 och MD5.
