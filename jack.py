@@ -36,7 +36,7 @@ def crackPassword(hashedPass, wordList, algorithm):
 
         if foundPass == False:
             f.close()
-            print("Error: could not find a matching password. Try changing wordlist")
+            print("Error: could not find a matching password. Check that the hash entered is correct or try changing the wordlist.")
 
 
 crackPassword(args.hashedpass, args.wordlist, args.algo)

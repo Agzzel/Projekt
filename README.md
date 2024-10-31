@@ -15,11 +15,11 @@ Verktyget kan inte kryptera mer än en rad per körning.
 <h3> Scanner </h3>
 
 Skannar ett nätverk med nmap och visar vilka program som körs på vilka portar. Skriptet kan antingen
-skanna en IP-adress som anges som argument, eller flera IP-adresser från en fil som argument.
+skanna en IP-adress som anges som argument, eller flera IP-adresser från en fil som argument. Portarna 1-1024 skannas vid körning.
 
 <b>Exempelkörning:</b>
 
-python3 scanner.py scan_ip 127.0.0.1 # Skannar localhost
+python3 scanner.py scan_ip 127.0.0.1 # Skannar port 1-1024 på localhost
 
 <h3> Sniffer </h3>
 
@@ -37,7 +37,7 @@ om användaren inte vet hur många packets som är relevanta att samla in.
 
 <h3> Jack the Rat </h3>
 Knäcker hashade strängar för att avslöja lösenord. Skriptet tar emot en hashad sträng, en textfil och 
-en sträng som visar vilken algoritm som användes för att hasha strängen. 
+en sträng med namnet på algoritmen som användes för att hasha strängen.
 
 <h3> Exempelkörning </h3>
 
