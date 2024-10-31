@@ -25,8 +25,9 @@ def crackPassword(hashedPass, wordList, algorithm):
             elif a == "md5":
                 hashedLine = hashlib.md5(line.strip().encode('utf-8')).hexdigest()
             else:
-                raise ValueError("Unsupported algorithm. Please choose between SHA1, SHA256 and MD5")
-                f.close()
+                print("Error: unsupported algorithm. Please choose between SHA1, SHA256 or MD5.")
+                return
+                sys.exit()
             
             if hashedLine == hashedPass:
                 f.close()

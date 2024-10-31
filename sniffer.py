@@ -8,6 +8,7 @@ parser.add_argument("filename", type=str, help="Name of the file where packets w
 parser.add_argument("--interface", type=str, required=False, help="Network interface to collect packets from")
 
 def performSniff(packetNum, protocol, filename):
+    print("Working...")
     if args.interface:
         capture = sniff(count=packetNum, filter=protocol, iface=args.interface)
     else:
@@ -19,6 +20,6 @@ try:
     performSniff(args.count, args.protocol, args.filename) 
 except PermissionError:
     print("Error: this program can only be executed by root")
-
+    sys.exit()
 args = parser.parse_args()
 performSniff(args.count, args.protocol, args.filename)

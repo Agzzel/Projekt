@@ -21,6 +21,10 @@ skanna en IP-adress som anges som argument, eller flera IP-adresser från en fil
 
 python3 scanner.py scan_ip 127.0.0.1 # Skannar port 1-1024 på localhost
 
+<h3> Kända begränsningar </h3>
+
+Skriptet kan inte skanna andra portar än 1-1024.
+
 <h3> Sniffer </h3>
 
 Avlyssnar packets som skickas och tas emot på ett nätverk. Detta skript måste köras med root-behörigheter. Skriptet tar emot antal packets som ska sparas, vilket protokoll som ska användas
@@ -37,7 +41,7 @@ om användaren inte vet hur många packets som är relevanta att samla in.
 
 <h3> Jack the Rat </h3>
 Knäcker hashade strängar för att avslöja lösenord. Skriptet tar emot en hashad sträng, en textfil och 
-en sträng med namnet på algoritmen som användes för att hasha strängen.
+en sträng med namnet på algoritmen som användes för att hasha strängen. Varje rad i textfilen hashas med den givna algoritmen och om hashen matchar en hashad rad i filen så visas lösenordet.
 
 <h3> Exempelkörning </h3>
 
